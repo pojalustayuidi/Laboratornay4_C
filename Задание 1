@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+struct fraction
+{
+	float numerator, denominator;
+};
+int main() {
+	setlocale(LC_ALL, "Russian");
+	char d = '/';
+	int lastind = 0;
+	float fractionSum = 0;
+	fraction fracsArr[1000];
+	cout << "Чтобы прекратить нажмите 0/0" << endl;
+	do
+	{
+		cout << "Введите дробь в формате x/y :   ";
+		cin >> fracsArr[lastind].numerator >> d >> fracsArr[lastind].denominator;
+		lastind++;
+	} while (fracsArr[lastind - 1].numerator != 0 && fracsArr[lastind-1].denominator);
+	for (int i = 0; i < lastind - 1; i++)
+	{
+		fractionSum += fracsArr[i].numerator / fracsArr[i].denominator;
+	}
+	fractionSum /= lastind - 1;
+	cout << "Среднее значение: " << fractionSum;
+
+}
