@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+struct employee
+{
+	long number;
+	char name[100];
+};
+void getdata(employee& e) {
+	char nums[100];
+	cout << "Введите имя сотрудника:  ";
+	cin.getline(e.name, 100);
+	cout << "Введите номер сотрудника:  ";
+	cin >> e.number;
+	cin.ignore();
+}
+void pushdata(employee& e) {
+	cout << "Имя сотрудника:  " << e.name << "  " << "Номер сотрудника:   " << e.number << endl;
+
+}
+int main() {
+	setlocale(LC_ALL, "Russian");
+	int const size = 3;
+	employee employess[size];
+	for (int i = 0; i < size; i++)
+	{
+		cout << " ";
+		cout << "Сотрудник #" << (i + 1) << endl;
+		getdata(employess[i]);
+	}
+
+	for (int i = 0; i < size; i++) {
+		cout << "Служающий номер:  " << (i + 1) << endl;
+		pushdata(employess[i]);
+	}
+}
