@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+void reversit(char strArr[], int n) {
+	char newArr[100];
+	char q = ' ';
+	for (int i = 0; i < n/2; i++)
+	{
+		q = strArr[i];
+		strArr[i] = strArr[n - i - 1];
+		strArr[n - i - 1] = q;
+
+	}
+
+
+}
+int main() {
+	setlocale(LC_ALL, "Russian");
+	char text[100];
+	cout << "Введите текст:  ";
+	cin.getline(text, 100);
+	reversit(text, strlen(text));
+
+	cout << "текст наоборот: " << (text);
+}
