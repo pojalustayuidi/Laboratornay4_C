@@ -1,0 +1,40 @@
+#include <iostream>
+using namespace std;
+struct Distance
+{
+	int feet, inches;
+};
+Distance averageDistance(Distance arr[], int length)
+{
+	Distance result;
+	int disFtSum = 0, disInchSum = 0, averageFt;
+	float averageInch;
+	for (int i = 0; i < length; i++)
+	{
+		disFtSum += arr[i].feet;
+		disInchSum += arr[i].inches;
+	}
+	disInchSum += disFtSum * 12;
+	averageInch = (disInchSum + 0.0) / length;
+	averageFt = averageInch / 12;
+	result.feet = averageFt;
+	result.inches = round(averageInch);
+	result.inches %= 12;
+	return result;
+}
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+	Distance dist[1000], result;
+	int disFtSt, disInchSt, disFtEn, disInchEn;
+	char dummy;
+	for (int i = 0; i < 5; i++)
+	{
+		cout << "Введите начало и конец интервала в формате x1'y1" x2'y2" : ";
+		cin >> disFtSt >> dummy >> disInchSt >> dummy >> disFtEn >> dummy >> disInchEn >> dummy;
+		dist[i].feet = abs(disFtSt - disFtEn);
+		dist[i].inches = abs(disInchSt - disInchEn);
+	}
+	result = averageDistance(dist, 5);
+	cout << "Средняя длина: " << result.feet << "'" << result.inches << """;
+}
